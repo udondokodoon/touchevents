@@ -3,6 +3,7 @@ import {run} from "@cycle/xstream-run";
 import {makeDOMDriver, h1} from "@cycle/dom";
 
 
+
 function main() {
 	const sinks = {
 		DOM: xs.periodic(1000).map(i => h1('' + i + " seconds elapsed"))
@@ -10,8 +11,9 @@ function main() {
   return sinks;
 }
 
-const drivers = {
+const drivers:{[name:string]: Function} = {
 	DOM: makeDOMDriver("#app")
 }
 
 run(main, drivers);
+
